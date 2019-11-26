@@ -6,7 +6,7 @@ Only accepts .csv file formats, and only reads values with constraints to the fo
 ```
 operation_date, identification, person_type, operation_amount, operation_currency
 ```
-see sample.csv in `public/` directory for references
+see `sample.csv` file in `public/` directory for references
 ### Installation
 
 Run
@@ -15,8 +15,8 @@ composer install
 ```
 
 ### Usage
-1. Upload / Paste your .csv file in the `public/` directory.
-2. Go to your terminal and execute the commission script with the csv file as first parameter.
+1. Upload / paste your .csv file in the `public/` directory.
+2. Go to your terminal and execute the commission script with the csv file as the first parameter.
 
 
 ```
