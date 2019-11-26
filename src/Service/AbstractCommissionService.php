@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Commissioner\CommissionTask\Service;
 
-use Commissioner\CommissionTask\Interfaces\MathInterface;
+use Commissioner\CommissionTask\Interfaces\MathServiceInterface;
 
 abstract class AbstractCommissionService
 {
@@ -22,23 +23,34 @@ abstract class AbstractCommissionService
     protected $rate;
 
     /**
+     * The number count after decimal points.
+     *
+     * @var int
+     */
+    protected $scale;
+
+    /**
      * The service that will handle mathematical procedure.
      *
-     * @var \Commissioner\CommissionTask\Interfaces\MathInterface
+     * @var \Commissioner\CommissionTask\Interfaces\MathServiceInterface
      */
     protected $mathService;
 
     /**
      * AbstractCommissionService constructor.
-     *
-     * @param \Commissioner\CommissionTask\Interfaces\MathInterface $math
-     * @param string $limit
-     * @param string $rate
      */
-    public function __construct(MathInterface $math, string $limit, string $rate)
+    public function __construct(MathServiceInterface $mathService, string $limit, string $rate, int $scale)
     {
         $this->limit = $limit;
-        $this->mathService = $math;
-        $this->rate = (string)($rate / 100);
+        $this->mathService = $mathService;
+        $this->rate = (string) (\floatval($rate) / 100);
+        $this->scale = $scale;
+    }
+
+    protected function roundOf(string $value): string
+    {
+        $number = (float) \round((float) $value, $this->scale);
+
+        return \number_format($number * 10, $this->scale, '.', '');
     }
 }

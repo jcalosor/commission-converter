@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Commissioner\CommissionTask\Interfaces;
 
-interface CashInInterface extends CommissionInterface
+interface EntityInterface
 {
-    // Body is not needed yet.
+    // Body not needed yet
 }

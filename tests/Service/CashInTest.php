@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Commissioner\CommissionTask\Tests\Service;
 
+use Commissioner\CommissionTask\Entities\PersonsNatural;
 use Commissioner\CommissionTask\Service\CashIn;
 
 /**
@@ -18,7 +19,10 @@ class CashInTest extends AbstractCommissionTestCase
      */
     public function testCashInSuccessLimitReturned()
     {
-        self::assertEquals($this->limit, (new CashIn($this->limit, '0.3', $this->scale))->encash('50000'));
+        $cashIn = $this->getResolvedCommissionService(CashIn::class, $this->limit);
+
+        self::assertSame('5', $this->limit);
+        self::assertSame('50.00', $cashIn->encash(new PersonsNatural(['operation_amount' => '50000']), '50000'));
     }
 
     /**
@@ -29,6 +33,8 @@ class CashInTest extends AbstractCommissionTestCase
      */
     public function testEncashSuccess()
     {
-        self::assertEquals('.50', (new CashIn($this->limit, '0.3', $this->scale))->encash('168'));
+        $cashIn = $this->getResolvedCommissionService(CashIn::class);
+
+        self::assertSame('5.00', $cashIn->encash(new PersonsNatural(['operation_amount' => '168']),'168'));
     }
 }

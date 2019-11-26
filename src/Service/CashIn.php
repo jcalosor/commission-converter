@@ -1,29 +1,25 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Commissioner\CommissionTask\Service;
 
 use Commissioner\CommissionTask\Interfaces\CashInInterface;
+use Commissioner\CommissionTask\Interfaces\PersonsInterface;
 
 class CashIn extends AbstractCommissionService implements CashInInterface
 {
     /**
      * The process of commission encashment.
-     *
-     * @param string $amount
-     *
-     * @return string
      */
-    public function encash(string $amount): string
+    public function encash(PersonsInterface $person, string $amount): string
     {
         $result = $this->mathService->multiply($this->rate, $amount);
 
-        if (\bccomp($result, $this->limit) > 0) {
-            return $this->limit;
+        if (\bccomp($result, $this->limit, $this->scale) > 0) {
+            return $this->roundOf($this->limit);
         }
 
-        \var_dump($this->limit, $this->rate);
-
-        return $result;
+        return $this->roundOf($result);
     }
 }

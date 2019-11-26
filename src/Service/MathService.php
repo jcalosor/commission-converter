@@ -1,12 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Commissioner\CommissionTask\Service;
 
-use Commissioner\CommissionTask\Interfaces\MathInterface;
+use Commissioner\CommissionTask\Interfaces\MathServiceInterface;
 
-class Math implements MathInterface
+class MathService implements MathServiceInterface
 {
+    /**
+     * The number count after decimal points.
+     *
+     * @var int
+     */
     private $scale;
 
     public function __construct(int $scale)
@@ -16,11 +22,6 @@ class Math implements MathInterface
 
     /**
      * Addition method using bcmath.
-     *
-     * @param string $leftOperand
-     * @param string $rightOperand
-     *
-     * @return string
      */
     public function add(string $leftOperand, string $rightOperand): string
     {
@@ -29,11 +30,6 @@ class Math implements MathInterface
 
     /**
      * Multiplication method using bcmath.
-     *
-     * @param string $leftOperand
-     * @param string $rightOperand
-     *
-     * @return string
      */
     public function multiply(string $leftOperand, string $rightOperand): string
     {

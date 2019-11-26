@@ -4,21 +4,21 @@ declare(strict_types=1);
 namespace Commissioner\CommissionTask\Tests\Service;
 
 use PHPUnit\Framework\TestCase;
-use Commissioner\CommissionTask\Service\Math;
+use Commissioner\CommissionTask\Service\MathService;
 
 /**
- * @covers \Commissioner\CommissionTask\Service\Math
+ * @covers \Commissioner\CommissionTask\Service\MathService
  */
 class MathTest extends TestCase
 {
     /**
-     * @var Math
+     * @var MathService
      */
     private $math;
 
     public function setUp()
     {
-        $this->math = new Math(2);
+        $this->math = new MathService(2);
     }
 
     /**
