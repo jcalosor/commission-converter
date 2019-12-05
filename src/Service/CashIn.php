@@ -17,9 +17,9 @@ class CashIn extends AbstractCommissionService implements CashInInterface
         $result = $this->mathService->multiply($this->rate, $amount);
 
         if (\bccomp($result, $this->limit, $this->scale) > 0) {
-            return $this->roundOf($this->limit);
+            return $this->limit;
         }
 
-        return $this->roundOf($result);
+        return $result;
     }
 }

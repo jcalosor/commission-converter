@@ -20,7 +20,7 @@ composer install
 
 
 ```
-./bin/commission persons.csv
+./bin/commission sample.csv
 ```
 
 Upon successful execution, the commissions will be printed out like so:

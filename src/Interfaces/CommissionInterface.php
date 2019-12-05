@@ -10,6 +10,7 @@ interface CommissionInterface
      * The process of commission encashment.
      *
      * @param \Commissioner\CommissionTask\Interfaces\PersonsInterface $person
+     * @param string
      */
     public function encash(PersonsInterface $person, string $amount): string;
 }

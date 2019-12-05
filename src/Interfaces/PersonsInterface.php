@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Commissioner\CommissionTask\Interfaces;
 
-interface PersonsInterface extends EntityInterface
+interface PersonsInterface
 {
     public function getOperationDate(): string;
 

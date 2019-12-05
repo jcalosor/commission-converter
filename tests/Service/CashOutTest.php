@@ -32,7 +32,7 @@ class CashOutTest extends AbstractCommissionTestCase
         self::assertSame('0.3', $this->rate);
         self::assertSame(
             '9000.00',
-            $cashOut->encash(new PersonsLegal(['operation_amount' => '300000']), '300000')
+            $cashOut->encash(new PersonsLegal(['operation_amount' => '3000000']), '3000000')
         );
     }
 
@@ -47,7 +47,7 @@ class CashOutTest extends AbstractCommissionTestCase
         $cashOut = $this->getResolvedCommissionService(CashOut::class, $this->limit);
         self::assertSame('0.3', $this->rate);
         self::assertSame(
-            '5.00',
+            '0.50',
             $cashOut->encash(new PersonsLegal(['operation_amount' => '100']), '100')
         );
     }

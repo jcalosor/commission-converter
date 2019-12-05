@@ -51,6 +51,6 @@ abstract class AbstractCommissionService
     {
         $number = (float) \round((float) $value, $this->scale);
 
-        return \number_format($number * 10, $this->scale, '.', '');
+        return \number_format($number, $this->scale, '.', '');
     }
 }

@@ -24,6 +24,11 @@ class CSVToEntityMapper implements CSVToEntityMapperInterface
     /**
      * @const string
      */
+    const CLASS_PATH = 'Commissioner\CommissionTask\Entities\Persons';
+
+    /**
+     * @const string
+     */
     const PERSONS = [PersonsLegal::TYPE, PersonsNatural::TYPE];
 
     /**
@@ -157,7 +162,7 @@ class CSVToEntityMapper implements CSVToEntityMapperInterface
         $person = $this->getPersonsClass($this->personData['person_type']);
 
         if (\class_exists($person) === false) {
-            throw new ClassNotFoundError(\sprintf('Class %s not found.', $person));
+            throw new ClassNotFoundError(\sprintf('Class %s not found.', $person), new \Exception());
         }
 
         return new $person($this->personData);
@@ -168,9 +173,7 @@ class CSVToEntityMapper implements CSVToEntityMapperInterface
      */
     private function getPersonsClass(string $type): string
     {
-        // @todo: this should be refactored,
-        // the implementation shouldn't have known about the entities person namespace.
-        return \sprintf('Commissioner\CommissionTask\Entities\Persons%s', \ucfirst($type));
+        return \sprintf('%s%s', self::CLASS_PATH, \ucfirst($type));
     }
 
     /**

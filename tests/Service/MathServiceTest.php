@@ -9,7 +9,7 @@ use Commissioner\CommissionTask\Service\MathService;
 /**
  * @covers \Commissioner\CommissionTask\Service\MathService
  */
-class MathTest extends TestCase
+class MathServiceTest extends TestCase
 {
     /**
      * @var MathService

@@ -40,7 +40,7 @@ $app->bind(
         return new CashIn(
             $app->get(MathServiceInterface::class),
             $config->get(CashIn::class)['fee_limit'],
-            $config->get('default')['fee_rate'],
+            $config->get(CashIn::class)['fee_rate'],
             (int) $config->get('default')['scale']
         );
     }
@@ -52,7 +52,7 @@ $app->bind(
         return new CashOut(
             $app->get(MathServiceInterface::class),
             $config->get(CashOut::class)['fee_limit'],
-            $config->get('default')['fee_rate'],
+            $config->get(CashOut::class)['fee_rate'],
             (int) $config->get('default')['scale']
         );
     }

@@ -7,13 +7,14 @@ use Commissioner\CommissionTask\Service\CashOut;
 
 return [
     'default' => [
-        'fee_rate' => '0.03%',
         'scale' => 2,
     ],
     CashIn::class => [
-        'fee_limit' => '5', // Maximum fee that should be returned
+        'fee_limit' => '5.00', // Maximum fee that should be returned
+        'fee_rate' => '0.03%',
     ],
     CashOut::class => [
-        'fee_limit' => '0.50', // Minimum fee that should returned
+        'fee_limit' => '0.50', // Minimum fee that should be returned
+        'fee_rate' => '0.3%',
     ],
 ];
